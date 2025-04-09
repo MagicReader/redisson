@@ -382,7 +382,7 @@ public class RedissonRateLimiterTest extends RedisDockerTest {
         start = System.currentTimeMillis();
         for (int i = 0; i < 3; i++) {
             rr.acquire(1);
-            assertThat(System.currentTimeMillis() - start / 1000).isEqualTo(i/2);
+            assertThat((System.currentTimeMillis() - start) / 1000).isEqualTo(i/2);
         }
 
         // after update, rate should be 5, availablePermits should be 1
@@ -393,7 +393,7 @@ public class RedissonRateLimiterTest extends RedisDockerTest {
         start = System.currentTimeMillis();
         for (int i = 0; i < 11; i++) {
             rr.acquire(1);
-            assertThat(System.currentTimeMillis() - start / 1000).isEqualTo(i/5);
+            assertThat((System.currentTimeMillis() - start) / 1000).isEqualTo(i/5);
         }
 
         // after update, rate should be 1, availablePermits should be 1
@@ -404,7 +404,7 @@ public class RedissonRateLimiterTest extends RedisDockerTest {
         start = System.currentTimeMillis();
         for (int i = 0; i < 3; i++) {
             rr.acquire(1);
-            assertThat(System.currentTimeMillis() - start / 1000).isEqualTo(i);
+            assertThat((System.currentTimeMillis() - start) / 1000).isEqualTo(i);
         }
 
         // after update, rate should be 6, availablePermits should be 0
@@ -426,7 +426,7 @@ public class RedissonRateLimiterTest extends RedisDockerTest {
         start = System.currentTimeMillis();
         for (int i = 0; i < 5; i++) {
             rr.acquire(3);
-            assertThat(System.currentTimeMillis() - start / 1000).isEqualTo(i*3/6);
+            assertThat((System.currentTimeMillis() - start) / 1000).isEqualTo(i*3/6);
         }
     }
 
